@@ -1,6 +1,6 @@
 package lv.javaguru.java2;
 
-public class Task {
+public class Product {
 
     private String title;
     private String description;
@@ -23,7 +23,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
+        return "Product{" +
                 "title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 '}';
@@ -34,10 +34,10 @@ public class Task {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Task task = (Task) o;
+        Product product = (Product) o;
 
-        if (title != null ? !title.equals(task.title) : task.title != null) return false;
-        return description != null ? description.equals(task.description) : task.description == null;
+        if (title != null ? !title.equals(product.title) : product.title != null) return false;
+        return description != null ? description.equals(product.description) : product.description == null;
     }
 
     @Override

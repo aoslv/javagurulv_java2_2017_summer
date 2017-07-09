@@ -1,0 +1,5 @@
+Next products:
+
+1. Implement each menu step in separate class
+2. Introduce Command design pattern
+3. Introduce Strategy design pattern
