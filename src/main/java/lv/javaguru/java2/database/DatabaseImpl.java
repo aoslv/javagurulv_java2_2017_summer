@@ -6,27 +6,27 @@ import lv.javaguru.java2.domain.Product;
 import java.util.List;
 import java.util.Optional;
 
-public class ProductDAOImpl implements ProductDAO {
+public class DatabaseImpl implements Database {
 
     private List<Product> products = Lists.newArrayList();
 
     @Override
-    public void add(Product product) {
+    public void addProduct(Product product) {
         products.add(product);
     }
 
     @Override
-    public void delete(Product product) {
+    public void deleteProduct(Product product) {
         products.remove(product);
     }
 
     @Override
-    public List<Product> getAll() {
+    public List<Product> getAllProducts() {
         return Lists.newArrayList(products);
     }
 
     @Override
-    public Optional<Product> getByTitle(String title) {
+    public Optional<Product> getProductByTitle(String title) {
         return products.stream()
                 .filter(p -> p.getTitle().equals(title))
                 .findFirst();

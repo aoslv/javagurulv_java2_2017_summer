@@ -1,16 +1,21 @@
 package lv.javaguru.java2.commands;
 
-import lv.javaguru.java2.Command;
+import lv.javaguru.java2.businesslogic.BusinessLogic;
 import lv.javaguru.java2.domain.Product;
 
-import java.util.List;
-
 public class PrintShoppingListCommand implements Command {
+
+    private BusinessLogic businessLogic;
+
+    public PrintShoppingListCommand(BusinessLogic businessLogic) {
+        this.businessLogic = businessLogic;
+    }
+
     @Override
-    public void execute(List<Product> products) {
+    public void execute() {
         System.out.println();
         System.out.println("Print shopping list to console execution start!");
-        for (Product product : products) {
+        for (Product product : businessLogic.getAllProducts()) {
             System.out.println(product.getTitle() + "[" + product.getDescription() + "]");
         }
         System.out.println("Print shopping list to console execution end!");

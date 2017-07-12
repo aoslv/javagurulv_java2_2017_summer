@@ -1,6 +1,6 @@
 package lv.javaguru.java2.businesslogic;
 
-import lv.javaguru.java2.database.ProductDAO;
+import lv.javaguru.java2.database.Database;
 import lv.javaguru.java2.domain.Product;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,29 +13,29 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class AddProductServiceImplTest {
+public class BusinessLogicImplTest {
 
-    private ProductDAO dao;
-    private AddProductService service;
+    private Database dao;
+    private BusinessLogic service;
 
     @Before
     public void init(){
-        dao = mock(ProductDAO.class);
-        service = new AddProductServiceImpl(dao);
+        dao = mock(Database.class);
+        service = new BusinessLogicImpl(dao);
     }
 
     @Test
     public void shouldAddNewProductIfNotExistInTheList() {
-        doReturn(Optional.empty()).when(dao).getByTitle("Bread");
+        doReturn(Optional.empty()).when(dao).getProductByTitle("Bread");
         boolean result = service.addProduct("Bread", "1gab");
         assertThat(result, is(true));
-        verify(dao).getByTitle("Bread");
+        verify(dao).getProductByTitle("Bread");
     }
 
     @Test
     public void shouldNotAddNewProductIfAlreadyExistInTheList() {
         Product product = mock(Product.class);
-        doReturn(Optional.of(product)).when(dao).getByTitle("Milk");
+        doReturn(Optional.of(product)).when(dao).getProductByTitle("Milk");
         boolean result = service.addProduct("Milk", "1L");
         assertThat(result, is(false));
     }

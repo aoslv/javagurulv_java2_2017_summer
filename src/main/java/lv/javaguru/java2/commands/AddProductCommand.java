@@ -1,22 +1,19 @@
 package lv.javaguru.java2.commands;
 
-import lv.javaguru.java2.Command;
-import lv.javaguru.java2.businesslogic.AddProductService;
-import lv.javaguru.java2.domain.Product;
+import lv.javaguru.java2.businesslogic.BusinessLogic;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class AddProductCommand implements Command {
 
-    private AddProductService addProductService;
+    private BusinessLogic businessLogic;
 
-    public AddProductCommand(AddProductService addProductService) {
-        this.addProductService = addProductService;
+    public AddProductCommand(BusinessLogic businessLogic) {
+        this.businessLogic = businessLogic;
     }
 
     @Override
-    public void execute(List<Product> products) {
+    public void execute() {
         System.out.println();
         System.out.println("Add product to list execution start!");
         Scanner sc = new Scanner(System.in);
@@ -27,12 +24,12 @@ public class AddProductCommand implements Command {
 
         ///////////////////////BL/////////////////////
 
-        boolean result = addProductService.addProduct(title, description);
+        boolean result = businessLogic.addProduct(title, description);
 
         //////////////BL END//////////
 
         if (!result) {
-            System.out.println("Can not add this product. " +
+            System.out.println("Can not addProduct this product. " +
                     "Already exist in the list");
         }
 

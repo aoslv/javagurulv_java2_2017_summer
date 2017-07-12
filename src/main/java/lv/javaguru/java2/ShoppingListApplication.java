@@ -1,17 +1,15 @@
 package lv.javaguru.java2;
 
-import lv.javaguru.java2.businesslogic.AddProductService;
-import lv.javaguru.java2.businesslogic.AddProductServiceImpl;
+import lv.javaguru.java2.businesslogic.BusinessLogic;
+import lv.javaguru.java2.businesslogic.BusinessLogicImpl;
 import lv.javaguru.java2.commands.AddProductCommand;
+import lv.javaguru.java2.commands.Command;
 import lv.javaguru.java2.commands.PrintShoppingListCommand;
 import lv.javaguru.java2.commands.RemoveProductCommand;
-import lv.javaguru.java2.database.ProductDAO;
-import lv.javaguru.java2.database.ProductDAOImpl;
-import lv.javaguru.java2.domain.Product;
+import lv.javaguru.java2.database.Database;
+import lv.javaguru.java2.database.DatabaseImpl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -23,15 +21,14 @@ public class ShoppingListApplication {
         // 2. Remove product from list
         // 3. Print shopping list to console
         // 4. Exit
-        ProductDAO productDAO = new ProductDAOImpl();
-        AddProductService addProductService = new AddProductServiceImpl(productDAO);
+        Database database = new DatabaseImpl();
+        BusinessLogic businessLogic = new BusinessLogicImpl(database);
 
         Map<Integer, Command> commands = new HashMap<>();
-        commands.put(1, new AddProductCommand(addProductService));
-        commands.put(2, new RemoveProductCommand());
-        commands.put(3, new PrintShoppingListCommand());
+        commands.put(1, new AddProductCommand(businessLogic));
+        commands.put(2, new RemoveProductCommand(businessLogic));
+        commands.put(3, new PrintShoppingListCommand(businessLogic));
 
-        List<Product> products = new ArrayList<>();
         while (true) {
             printProgramMenu();
             int menuItem = getFromUserMenuItemToExecute();
@@ -39,7 +36,7 @@ public class ShoppingListApplication {
                 break;
             } else {
                 Command command = commands.get(menuItem);
-                command.execute(products);
+                command.execute();
             }
         }
 
