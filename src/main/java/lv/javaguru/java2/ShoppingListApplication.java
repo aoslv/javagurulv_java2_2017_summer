@@ -16,11 +16,6 @@ import java.util.Scanner;
 public class ShoppingListApplication {
 
     public static void main(String[] args) {
-        // Use cases:
-        // 1. Add product to list
-        // 2. Remove product from list
-        // 3. Print shopping list to console
-        // 4. Exit
         Database database = new DatabaseImpl();
         BusinessLogic businessLogic = new BusinessLogicImpl(database);
 
