@@ -1,11 +1,12 @@
 package lv.javaguru.java2;
 
+import lv.javaguru.java2.businesslogic.AddProductValidator;
 import lv.javaguru.java2.businesslogic.BusinessLogic;
 import lv.javaguru.java2.businesslogic.BusinessLogicImpl;
-import lv.javaguru.java2.commands.AddProductCommand;
-import lv.javaguru.java2.commands.Command;
-import lv.javaguru.java2.commands.PrintShoppingListCommand;
-import lv.javaguru.java2.commands.RemoveProductCommand;
+import lv.javaguru.java2.views.AddProductView;
+import lv.javaguru.java2.views.View;
+import lv.javaguru.java2.views.PrintShoppingListView;
+import lv.javaguru.java2.views.RemoveProductView;
 import lv.javaguru.java2.database.Database;
 import lv.javaguru.java2.database.DatabaseImpl;
 
@@ -17,12 +18,13 @@ public class ShoppingListApplication {
 
     public static void main(String[] args) {
         Database database = new DatabaseImpl();
-        BusinessLogic businessLogic = new BusinessLogicImpl(database);
+        AddProductValidator addProductValidator = new AddProductValidator(database);
+        BusinessLogic businessLogic = new BusinessLogicImpl(database, addProductValidator);
 
-        Map<Integer, Command> commands = new HashMap<>();
-        commands.put(1, new AddProductCommand(businessLogic));
-        commands.put(2, new RemoveProductCommand(businessLogic));
-        commands.put(3, new PrintShoppingListCommand(businessLogic));
+        Map<Integer, View> commands = new HashMap<>();
+        commands.put(1, new AddProductView(businessLogic));
+        commands.put(2, new RemoveProductView(businessLogic));
+        commands.put(3, new PrintShoppingListView(businessLogic));
 
         while (true) {
             printProgramMenu();
@@ -30,8 +32,8 @@ public class ShoppingListApplication {
             if (menuItem == 4) {
                 break;
             } else {
-                Command command = commands.get(menuItem);
-                command.execute();
+                View view = commands.get(menuItem);
+                view.execute();
             }
         }
 

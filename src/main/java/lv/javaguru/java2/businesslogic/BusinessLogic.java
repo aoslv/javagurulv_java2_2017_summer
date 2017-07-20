@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BusinessLogic {
 
-    boolean addProduct(String title, String description);
+    Response addProduct(String title, String description);
 
     boolean removeProductByTitle(String title);
 

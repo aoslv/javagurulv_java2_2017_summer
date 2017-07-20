@@ -1,13 +1,13 @@
-package lv.javaguru.java2.commands;
+package lv.javaguru.java2.views;
 
 import lv.javaguru.java2.businesslogic.BusinessLogic;
 import lv.javaguru.java2.domain.Product;
 
-public class PrintShoppingListCommand implements Command {
+public class PrintShoppingListView implements View {
 
     private BusinessLogic businessLogic;
 
-    public PrintShoppingListCommand(BusinessLogic businessLogic) {
+    public PrintShoppingListView(BusinessLogic businessLogic) {
         this.businessLogic = businessLogic;
     }
 

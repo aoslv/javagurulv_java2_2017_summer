@@ -1,14 +1,14 @@
-package lv.javaguru.java2.commands;
+package lv.javaguru.java2.views;
 
 import lv.javaguru.java2.businesslogic.BusinessLogic;
 
 import java.util.Scanner;
 
-public class RemoveProductCommand implements Command {
+public class RemoveProductView implements View {
 
     private BusinessLogic businessLogic;
 
-    public RemoveProductCommand(BusinessLogic businessLogic) {
+    public RemoveProductView(BusinessLogic businessLogic) {
         this.businessLogic = businessLogic;
     }
 

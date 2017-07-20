@@ -1,14 +1,15 @@
-package lv.javaguru.java2.commands;
+package lv.javaguru.java2.views;
 
 import lv.javaguru.java2.businesslogic.BusinessLogic;
+import lv.javaguru.java2.businesslogic.Response;
 
 import java.util.Scanner;
 
-public class AddProductCommand implements Command {
+public class AddProductView implements View {
 
     private BusinessLogic businessLogic;
 
-    public AddProductCommand(BusinessLogic businessLogic) {
+    public AddProductView(BusinessLogic businessLogic) {
         this.businessLogic = businessLogic;
     }
 
@@ -24,11 +25,12 @@ public class AddProductCommand implements Command {
 
         ///////////////////////BL/////////////////////
 
-        boolean result = businessLogic.addProduct(title, description);
+        Response response = businessLogic.addProduct(title, description);
 
         //////////////BL END//////////
 
-        if (!result) {
+        if (response.isFail()) {
+            // TODO print List<Error>
             System.out.println("Can not addProduct this product. " +
                     "Already exist in the list");
         }
