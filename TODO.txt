@@ -45,27 +45,37 @@ Lesson 3:
    focus on incremental development process
 
 Lesson 4:
+11. Discuss db integration step by step
+12. Show how to write integration tests
+13. Switch application from InMemory database to real database integration
+14. Improve JDBC code if possible
+15. Introduce Request object to business logic
+16. Introduce acceptance tests, show how to test app without UI,
+using only request/response to business logic
+
+17. Introduce Command design pattern for Business Logic layer
+
+
+Lesson 5:
 11.Implement Business Rule: User can create different shopping lists.
    Each shopping list must have unique title.
 12.Think about domain model design. Introduce ShoppingList entity.
    Discuss shopping list and product relations and how to implement them.
 13.Implement CRUD operations for Shopping List entity.
 
-Lesson 5:
+Lesson 6:
 IoC, Business Logic implementation
 
 
-Lesson 6:
+Lesson 7:
 Introduction to ORM, Hibernate, JPA
 
-Lesson 7:
-ORM, Hibernate, JPA relations
-
 Lesson 8:
-HTML, CSS, simple Spring MVC introduction, UI implementation
+ORM, Hibernate, JPA relations
 
 Lesson 9:
 HTML, CSS, simple Spring MVC introduction, UI implementation
 
-
 Lesson 10:
+HTML, CSS, simple Spring MVC introduction, UI implementation
+
