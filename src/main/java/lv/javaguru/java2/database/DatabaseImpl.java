@@ -2,10 +2,12 @@ package lv.javaguru.java2.database;
 
 import com.google.common.collect.Lists;
 import lv.javaguru.java2.domain.Product;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class DatabaseImpl implements Database {
 
     private List<Product> products = Lists.newArrayList();

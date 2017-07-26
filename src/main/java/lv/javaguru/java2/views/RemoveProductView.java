@@ -1,13 +1,17 @@
 package lv.javaguru.java2.views;
 
 import lv.javaguru.java2.businesslogic.BusinessLogic;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Component
 public class RemoveProductView implements View {
 
     private BusinessLogic businessLogic;
 
+    @Autowired
     public RemoveProductView(BusinessLogic businessLogic) {
         this.businessLogic = businessLogic;
     }

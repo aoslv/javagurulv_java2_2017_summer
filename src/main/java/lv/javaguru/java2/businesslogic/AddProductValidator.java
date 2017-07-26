@@ -2,14 +2,18 @@ package lv.javaguru.java2.businesslogic;
 
 import com.google.common.collect.Lists;
 import lv.javaguru.java2.database.Database;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class AddProductValidator {
 
-    private Database database;
+     private Database database;
 
+    @Autowired
     public AddProductValidator(Database database) {
         this.database = database;
     }

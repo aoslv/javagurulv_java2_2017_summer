@@ -2,13 +2,17 @@ package lv.javaguru.java2.views;
 
 import lv.javaguru.java2.businesslogic.BusinessLogic;
 import lv.javaguru.java2.businesslogic.Response;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Component
 public class AddProductView implements View {
 
     private BusinessLogic businessLogic;
 
+    @Autowired
     public AddProductView(BusinessLogic businessLogic) {
         this.businessLogic = businessLogic;
     }

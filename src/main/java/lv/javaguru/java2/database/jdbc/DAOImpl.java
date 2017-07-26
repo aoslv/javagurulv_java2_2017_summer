@@ -20,7 +20,7 @@ public class DAOImpl {
 
     public DAOImpl() {
         initDatabaseConnectionProperties();
-        registerJDBCDriver();
+        //registerJDBCDriver();
     }
 
     private void registerJDBCDriver() {

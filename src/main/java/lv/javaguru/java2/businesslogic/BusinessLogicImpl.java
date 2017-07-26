@@ -3,17 +3,21 @@ package lv.javaguru.java2.businesslogic;
 
 import lv.javaguru.java2.database.Database;
 import lv.javaguru.java2.domain.Product;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
 import static lv.javaguru.java2.domain.ProductBuilder.createProduct;
 
-public class BusinessLogicImpl implements BusinessLogic {
+@Component
+class BusinessLogicImpl implements BusinessLogic {
 
     private Database database;
     private AddProductValidator addProductValidator;
 
+    @Autowired
     public BusinessLogicImpl(Database database,
                              AddProductValidator addProductValidator) {
         this.database = database;

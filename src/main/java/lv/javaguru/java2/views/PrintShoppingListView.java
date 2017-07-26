@@ -2,11 +2,15 @@ package lv.javaguru.java2.views;
 
 import lv.javaguru.java2.businesslogic.BusinessLogic;
 import lv.javaguru.java2.domain.Product;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PrintShoppingListView implements View {
 
     private BusinessLogic businessLogic;
 
+    @Autowired
     public PrintShoppingListView(BusinessLogic businessLogic) {
         this.businessLogic = businessLogic;
     }
