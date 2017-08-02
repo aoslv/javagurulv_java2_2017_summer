@@ -4,11 +4,7 @@ import lv.javaguru.java2.domain.Product;
 
 import java.util.List;
 
-public interface BusinessLogic {
-
-    Response addProduct(String title, String description);
-
-    boolean removeProductByTitle(String title);
+public interface GetAllProductsService {
 
     List<Product> getAllProducts();
 

@@ -2,9 +2,11 @@ package lv.javaguru.java2.businesslogic;
 
 import lv.javaguru.java2.database.Database;
 import lv.javaguru.java2.domain.Product;
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,16 +16,14 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.doReturn;
 
-public class AddProductValidatorTest {
+@RunWith(MockitoJUnitRunner.class)
+public class AddProductValidatorImplTest {
 
-    private Database database;
-    private AddProductValidator validator;
+    @Mock private Database database;
 
-    @Before
-    public void init() {
-        database = Mockito.mock(Database.class);
-        validator = new AddProductValidator(database);
-    }
+    @InjectMocks
+    private AddProductValidator validator = new AddProductValidatorImpl();
+
 
     @Test
     public void shouldReturnErrorWhenTitleIsNull() {

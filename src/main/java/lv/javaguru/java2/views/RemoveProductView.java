@@ -1,6 +1,6 @@
 package lv.javaguru.java2.views;
 
-import lv.javaguru.java2.businesslogic.BusinessLogic;
+import lv.javaguru.java2.businesslogic.RemoveProductByTitleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,12 +9,7 @@ import java.util.Scanner;
 @Component
 public class RemoveProductView implements View {
 
-    private BusinessLogic businessLogic;
-
-    @Autowired
-    public RemoveProductView(BusinessLogic businessLogic) {
-        this.businessLogic = businessLogic;
-    }
+    @Autowired private RemoveProductByTitleService service;
 
     @Override
     public void execute() {
@@ -26,7 +21,7 @@ public class RemoveProductView implements View {
 
         ///////////////////BL/////////////////////////
 
-        boolean result = businessLogic.removeProductByTitle(title);
+        boolean result = service.remove(title);
 
         ////////////////////BL end /////////////////
 

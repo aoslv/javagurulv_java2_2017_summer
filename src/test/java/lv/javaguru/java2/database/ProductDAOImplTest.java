@@ -1,9 +1,11 @@
 package lv.javaguru.java2.database;
 
-import lv.javaguru.java2.database.jdbc.ProductDAOImpl;
+import lv.javaguru.java2.config.SpringAppConfig;
 import lv.javaguru.java2.domain.Product;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Optional;
 
@@ -16,11 +18,14 @@ import static org.junit.Assert.assertThat;
 
 public class ProductDAOImplTest {
 
-    private DatabaseUtil databaseUtil = new DatabaseUtil();
-    private ProductDAO productDAO = new ProductDAOImpl();
+    private DatabaseUtil databaseUtil;
+    private ProductDAO productDAO;
 
     @Before
     public void init() {
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringAppConfig.class);
+        productDAO = applicationContext.getBean(ProductDAO.class);
+        databaseUtil = applicationContext.getBean(DatabaseUtil.class);
         databaseUtil.cleanDatabase();
     }
 

@@ -1,6 +1,6 @@
 package lv.javaguru.java2.views;
 
-import lv.javaguru.java2.businesslogic.BusinessLogic;
+import lv.javaguru.java2.businesslogic.AddProductService;
 import lv.javaguru.java2.businesslogic.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,12 +10,7 @@ import java.util.Scanner;
 @Component
 public class AddProductView implements View {
 
-    private BusinessLogic businessLogic;
-
-    @Autowired
-    public AddProductView(BusinessLogic businessLogic) {
-        this.businessLogic = businessLogic;
-    }
+    @Autowired private AddProductService addProductService;
 
     @Override
     public void execute() {
@@ -29,7 +24,7 @@ public class AddProductView implements View {
 
         ///////////////////////BL/////////////////////
 
-        Response response = businessLogic.addProduct(title, description);
+        Response response = addProductService.addProduct(title, description);
 
         //////////////BL END//////////
 

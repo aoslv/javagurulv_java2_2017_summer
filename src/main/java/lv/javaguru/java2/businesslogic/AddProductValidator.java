@@ -8,16 +8,17 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Optional;
 
+public interface AddProductValidator {
+    List<Error> validate(String title, String description);
+}
+
 @Component
-public class AddProductValidator {
+class AddProductValidatorImpl implements AddProductValidator {
 
-     private Database database;
+    @Autowired private Database database;
 
-    @Autowired
-    public AddProductValidator(Database database) {
-        this.database = database;
-    }
 
+    @Override
     public List<Error> validate(String title, String description) {
         List<Error> errors = Lists.newArrayList();
         validateTitle(title).ifPresent(e -> errors.add(e));

@@ -55,13 +55,15 @@ using only request/response to business logic
 
 
 Lesson 5:
+17. Update Spring Framework dependency to newest version
+18. application.properties file and how to inject properties to code @Value
+19. IoC, Business Logic implementation, split to small classes and services
+
 17. Implement Business Rule: User can create different shopping lists.
     Each shopping list must have unique title.
 18. Think about domain model design. Introduce ShoppingList entity.
     Discuss shopping list and product relations and how to implement them.
 19. Implement CRUD operations for Shopping List entity.
-20. IoC, Business Logic implementation, split to small classes and services
-21. application.properties file and how to inject properties to code @Value
 
 
 

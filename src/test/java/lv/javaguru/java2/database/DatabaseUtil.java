@@ -1,12 +1,14 @@
 package lv.javaguru.java2.database;
 
 import lv.javaguru.java2.database.jdbc.DAOImpl;
+import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class DatabaseUtil extends DAOImpl {
 
     public void cleanDatabase() throws DBException {
