@@ -1,6 +1,8 @@
 package lv.javaguru.java2.businesslogic;
 
 import com.google.common.collect.Lists;
+import lv.javaguru.java2.businesslogic.api.Error;
+import lv.javaguru.java2.businesslogic.api.Response;
 import lv.javaguru.java2.database.ProductDAO;
 import lv.javaguru.java2.domain.Product;
 import org.junit.Test;

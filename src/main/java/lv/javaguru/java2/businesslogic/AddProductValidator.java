@@ -1,6 +1,7 @@
 package lv.javaguru.java2.businesslogic;
 
 import com.google.common.collect.Lists;
+import lv.javaguru.java2.businesslogic.api.Error;
 import lv.javaguru.java2.database.Database;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

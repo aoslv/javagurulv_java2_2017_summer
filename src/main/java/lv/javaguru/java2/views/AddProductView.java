@@ -1,7 +1,7 @@
 package lv.javaguru.java2.views;
 
 import lv.javaguru.java2.businesslogic.AddProductService;
-import lv.javaguru.java2.businesslogic.Response;
+import lv.javaguru.java2.businesslogic.api.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
