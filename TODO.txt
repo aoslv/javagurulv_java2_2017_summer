@@ -53,18 +53,22 @@ Lesson 4:
 16. Introduce acceptance tests, show how to test app without UI,
 using only request/response to business logic
 
-17. Introduce Command design pattern for Business Logic layer
-
 
 Lesson 5:
-11.Implement Business Rule: User can create different shopping lists.
-   Each shopping list must have unique title.
-12.Think about domain model design. Introduce ShoppingList entity.
-   Discuss shopping list and product relations and how to implement them.
-13.Implement CRUD operations for Shopping List entity.
+17. Implement Business Rule: User can create different shopping lists.
+    Each shopping list must have unique title.
+18. Think about domain model design. Introduce ShoppingList entity.
+    Discuss shopping list and product relations and how to implement them.
+19. Implement CRUD operations for Shopping List entity.
+20. IoC, Business Logic implementation, split to small classes and services
+21. application.properties file and how to inject properties to code @Value
+
+
+
 
 Lesson 6:
-IoC, Business Logic implementation
+Introduce Servlet API
+Introduce Command design pattern for Business Logic layer
 
 
 Lesson 7:
