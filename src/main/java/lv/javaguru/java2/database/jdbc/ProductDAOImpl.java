@@ -3,6 +3,7 @@ package lv.javaguru.java2.database.jdbc;
 import lv.javaguru.java2.database.DBException;
 import lv.javaguru.java2.database.ProductDAO;
 import lv.javaguru.java2.domain.Product;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
@@ -15,10 +16,11 @@ import java.util.Map;
 import java.util.Optional;
 
 @Component
-public class ProductDAOImpl extends DAOImpl implements ProductDAO {
+public class ProductDAOImpl implements ProductDAO {
 
     private JdbcTemplate jdbcTemplate;
 
+    @Autowired
     public ProductDAOImpl(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
