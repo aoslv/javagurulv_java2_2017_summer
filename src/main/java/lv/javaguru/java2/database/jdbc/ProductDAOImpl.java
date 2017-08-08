@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +32,8 @@ public class ProductDAOImpl implements ProductDAO {
             p.setId(rs.getLong("id"));
             p.setTitle(rs.getString("title"));
             p.setDescription(rs.getString("description"));
+            p.setCreatedAt(rs.getTimestamp("created_at"));
+            p.setUpdatedAt(rs.getTimestamp("updated_at"));
             return p;
         };
     }
@@ -40,15 +43,21 @@ public class ProductDAOImpl implements ProductDAO {
     public Product save(Product product) throws DBException {
         SimpleJdbcInsert insert = new SimpleJdbcInsert(jdbcTemplate)
                 .withTableName("products")
-                .usingColumns("title", "description")
+                .usingColumns("title", "description", "created_at", "updated_at")
                 .usingGeneratedKeyColumns("id");
+
+        product.setCreatedAt(new Date());
+        product.setUpdatedAt(new Date());
 
         Map parameters = new HashMap();
         parameters.put("title", product.getTitle());
         parameters.put("description", product.getDescription());
+        parameters.put("created_at", product.getCreatedAt());
+        parameters.put("updated_at", product.getUpdatedAt());
 
         Long id = insert.executeAndReturnKey(parameters).longValue();
         product.setId(id);
+
 
         return product;
     }

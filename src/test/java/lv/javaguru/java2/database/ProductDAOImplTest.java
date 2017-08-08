@@ -14,6 +14,7 @@ import static lv.javaguru.java2.domain.ProductBuilder.createProduct;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 public class ProductDAOImplTest {
@@ -40,6 +41,7 @@ public class ProductDAOImplTest {
         assertEquals(product.getId(), productFromDB.get().getId());
         assertEquals(product.getTitle(), productFromDB.get().getTitle());
         assertEquals(product.getDescription(), productFromDB.get().getDescription());
+        assertNotNull(product.getCreatedAt());
     }
 
     @Test

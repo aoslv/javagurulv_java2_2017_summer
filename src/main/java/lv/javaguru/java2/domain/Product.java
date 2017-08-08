@@ -1,6 +1,6 @@
 package lv.javaguru.java2.domain;
 
-public class Product {
+public class Product extends BaseEntity {
 
     private Long id;
     private String title;
