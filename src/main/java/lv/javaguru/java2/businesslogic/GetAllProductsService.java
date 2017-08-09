@@ -16,8 +16,7 @@ public interface GetAllProductsService {
 @Component
 class GetAllProductsServiceImpl implements GetAllProductsService {
 
-    @Autowired
-    private ProductDAO dao;
+    @Autowired private ProductDAO dao;
 
     @Override
     public List<Product> getAllProducts() {
