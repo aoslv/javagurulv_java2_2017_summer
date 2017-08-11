@@ -4,8 +4,10 @@ import lv.javaguru.java2.config.SpringAppConfig;
 import lv.javaguru.java2.domain.Product;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,16 +18,15 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+@RunWith(SpringRunner.class)
+@ContextConfiguration(classes = SpringAppConfig.class)
 public class ProductDAOImplTest {
 
-    private DatabaseUtil databaseUtil;
-    private ProductDAO productDAO;
+    @Autowired private DatabaseUtil databaseUtil;
+    @Autowired private ProductDAO productDAO;
 
     @Before
     public void init() {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringAppConfig.class);
-        productDAO = applicationContext.getBean(ProductDAO.class);
-        databaseUtil = applicationContext.getBean(DatabaseUtil.class);
         databaseUtil.cleanDatabase();
     }
 
