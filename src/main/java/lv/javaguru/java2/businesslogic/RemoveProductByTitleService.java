@@ -6,6 +6,7 @@ import lv.javaguru.java2.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 public interface RemoveProductByTitleService {
@@ -18,6 +19,7 @@ class RemoveProductByTitleServiceImpl implements RemoveProductByTitleService {
     @Autowired private ProductDAO dao;
 
     @Override
+    @Transactional
     public boolean remove(String title) {
         Optional<Product> foundProduct = dao.getByTitle(title);
         if (foundProduct.isPresent()) {

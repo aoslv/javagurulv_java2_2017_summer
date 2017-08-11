@@ -8,12 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class PrintShoppingListView implements View {
 
-    private GetAllProductsService getAllProductsService;
-
-    @Autowired
-    public PrintShoppingListView(GetAllProductsService getAllProductsService) {
-        this.getAllProductsService = getAllProductsService;
-    }
+    @Autowired private GetAllProductsService getAllProductsService;
 
     @Override
     public void execute() {
