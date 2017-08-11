@@ -7,6 +7,7 @@ import lv.javaguru.java2.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 import static lv.javaguru.java2.domain.ProductBuilder.createProduct;
@@ -23,8 +24,8 @@ class AddProductServiceImpl implements AddProductService {
     @Autowired private ProductDAO dao;
     @Autowired private AddProductValidator addProductValidator;
 
-
     @Override
+    @Transactional
     public Response addProduct(String title, String description) {
         List<Error> validationErrors = addProductValidator.validate(title, description);
         if (!validationErrors.isEmpty()) {
