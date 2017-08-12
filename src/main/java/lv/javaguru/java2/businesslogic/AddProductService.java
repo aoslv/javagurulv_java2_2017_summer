@@ -22,12 +22,12 @@ public interface AddProductService {
 class AddProductServiceImpl implements AddProductService {
 
     @Autowired private ProductDAO dao;
-    @Autowired private AddProductValidator addProductValidator;
+    @Autowired private AddProductValidator validator;
 
     @Override
     @Transactional
     public Response addProduct(String title, String description) {
-        List<Error> validationErrors = addProductValidator.validate(title, description);
+        List<Error> validationErrors = validator.validate(title, description);
         if (!validationErrors.isEmpty()) {
             return Response.createFailResponse(validationErrors);
         }

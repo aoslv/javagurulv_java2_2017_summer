@@ -1,7 +1,7 @@
 package lv.javaguru.java2.businesslogic;
 
 import lv.javaguru.java2.businesslogic.api.Error;
-import lv.javaguru.java2.database.Database;
+import lv.javaguru.java2.database.ProductDAO;
 import lv.javaguru.java2.domain.Product;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.doReturn;
 @RunWith(MockitoJUnitRunner.class)
 public class AddProductValidatorImplTest {
 
-    @Mock private Database database;
+    @Mock private ProductDAO productDAO;
 
     @InjectMocks
     private AddProductValidator validator = new AddProductValidatorImpl();
@@ -59,9 +59,9 @@ public class AddProductValidatorImplTest {
     }
 
     @Test
-    public void shouldFailIfProductWitSameTitleAlreadyExistInDB() {
+    public void shouldFailIfProductWithSameTitleAlreadyExistInDB() {
         Product product = createProduct().build();
-        doReturn(Optional.of(product)).when(database).getProductByTitle("title");
+        doReturn(Optional.of(product)).when(productDAO).getByTitle("title");
         List<Error> errors = validator.validate("title", "description");
         assertThat(errors.size(), is(1));
         assertThat(errors.get(0).getField(), is("title"));

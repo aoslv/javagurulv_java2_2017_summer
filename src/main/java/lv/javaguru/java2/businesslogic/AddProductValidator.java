@@ -2,7 +2,7 @@ package lv.javaguru.java2.businesslogic;
 
 import com.google.common.collect.Lists;
 import lv.javaguru.java2.businesslogic.api.Error;
-import lv.javaguru.java2.database.Database;
+import lv.javaguru.java2.database.ProductDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,8 +16,7 @@ public interface AddProductValidator {
 @Component
 class AddProductValidatorImpl implements AddProductValidator {
 
-    @Autowired private Database database;
-
+    @Autowired private ProductDAO productDAO;
 
     @Override
     public List<Error> validate(String title, String description) {
@@ -38,7 +37,7 @@ class AddProductValidatorImpl implements AddProductValidator {
     }
 
     private boolean alreadyExist(String title) {
-        return database.getProductByTitle(title).isPresent();
+        return productDAO.getByTitle(title).isPresent();
     }
 
     private Optional<Error> validateDescription(String description) {
