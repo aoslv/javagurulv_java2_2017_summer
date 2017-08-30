@@ -1,10 +1,10 @@
 package lv.javaguru.java2;
 
-import lv.javaguru.java2.config.SpringAppConfig;
-import lv.javaguru.java2.views.AddProductView;
-import lv.javaguru.java2.views.PrintShoppingListView;
-import lv.javaguru.java2.views.RemoveProductView;
-import lv.javaguru.java2.views.View;
+import lv.javaguru.java2.console.config.SpringAppConfig;
+import lv.javaguru.java2.console.views.AddProductView;
+import lv.javaguru.java2.console.views.PrintShoppingListView;
+import lv.javaguru.java2.console.views.RemoveProductView;
+import lv.javaguru.java2.console.views.View;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
